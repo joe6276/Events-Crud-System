@@ -1,0 +1,29 @@
+
+GET  http://localhost:3000/users
+### Post Request
+
+
+POST  http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name":"Joe",
+    "email":"joendambuki16@gmail.com",
+    "password":"12345678"
+}
+
+###
+GET  http://localhost:3000/users/2
+
+###
+DELETE   http://localhost:3000/users/1
+
+####
+PUT  http://localhost:3000/users/2
+Content-Type: application/json
+
+{
+    "name":"Updated Joe",
+    "email":"joendambuki16@gmail.com",
+    "password":"12345678"
+}
