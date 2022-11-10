@@ -7,7 +7,7 @@ import { JTWStrategy } from './jwt.strategy';
 @Module({
   imports:[ forwardRef(() =>UsersModule), 
   JwtModule.register({
-    secret:'1234567890',
+    secret:process.env.SECRET,
     signOptions:{expiresIn:'60s'}
   })
   ],
