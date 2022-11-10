@@ -12,6 +12,12 @@ constructor(private userService:UsersService,
     getUsers(){
         return this.userService.getUsers()
     }
+ 
+    @UseGuards(AuthGuard('jwt'))
+    @Get('protected')
+    getProtected(@Request() req:any){
+        return req.user
+    }
 
     @Get(':id')
     getUser(@Param('id') id:string){
@@ -44,4 +50,5 @@ constructor(private userService:UsersService,
         return this.authService.login(req.user)
         
     }
+ 
 }
