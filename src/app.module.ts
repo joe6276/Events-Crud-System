@@ -6,6 +6,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './users/Entities/UserEntity';
 import { EventsModule } from './events/events.module';
 import { EventsEntity } from './events/Entities/Events';
+import { AuthModule } from './auth/auth.module';
+
+
+
 @Module({
 
   imports: [UsersModule, TypeOrmModule.forRoot({
@@ -13,8 +17,8 @@ import { EventsEntity } from './events/Entities/Events';
     database:'events.sqlite',
     entities:[UserEntity,EventsEntity],
     synchronize:true
-  }), EventsModule],
+  }), EventsModule, AuthModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ],
 })
 export class AppModule {}

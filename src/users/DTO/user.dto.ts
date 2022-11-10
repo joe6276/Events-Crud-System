@@ -2,7 +2,7 @@ import { IsString, IsNotEmpty } from "class-validator";
 export class UserDTO {
     @IsNotEmpty()
     @IsString()
-    name:string
+    username:string
 
     @IsNotEmpty()
     @IsString()

@@ -17,6 +17,9 @@ constructor(@InjectRepository(UserEntity) private userRepo:Repository<UserEntity
         } 
         return user
     }
+    getUserByUsername(username:string){
+        return this.userRepo.findOne({where:{username}})
+    }
     addUser(body:UserDTO){
         const userInstance = this.userRepo.create(body)
         return this.userRepo.save(userInstance)

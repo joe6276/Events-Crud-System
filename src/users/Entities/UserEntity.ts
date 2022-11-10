@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column , DeleteDateColumn} from 'typeorm'
+import { EventsEntity } from 'src/events/Entities/Events'
+import {Entity, PrimaryGeneratedColumn, Column , DeleteDateColumn, ManyToOne} from 'typeorm'
 
 @Entity()
 export class UserEntity{
@@ -6,7 +7,7 @@ export class UserEntity{
     id:string
 
     @Column()
-    name:string
+    username:string
 
     @Column()
     email:string
@@ -16,4 +17,7 @@ export class UserEntity{
 
     @DeleteDateColumn()
     deletedAt:Date
+
+    @ManyToOne(()=>EventsEntity , event=> event.user)
+    event:EventsEntity
 }

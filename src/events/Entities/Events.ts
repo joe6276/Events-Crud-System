@@ -1,4 +1,5 @@
-import {PrimaryGeneratedColumn, Column , Entity ,DeleteDateColumn} from 'typeorm'
+import { UserEntity } from 'src/users/Entities/UserEntity'
+import {PrimaryGeneratedColumn, Column , Entity ,DeleteDateColumn, OneToOne, ManyToOne, OneToMany} from 'typeorm'
 
 
 @Entity()
@@ -20,4 +21,7 @@ date:string
 
 @DeleteDateColumn()
 deletedAt:Date
+
+@OneToMany(()=>UserEntity , user =>user.event)
+user:UserEntity
 }
