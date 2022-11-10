@@ -20,6 +20,7 @@ constructor( @InjectRepository(EventsEntity) private eventsRepo:Repository<Event
     }
     createEvent(eventData:EventsDTO){
         const eventInstance= this.eventsRepo.create(eventData)
+        
         return this.eventsRepo.save(eventInstance)
     }
     async getEventbyID(id:string){

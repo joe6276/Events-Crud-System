@@ -7,17 +7,27 @@ POST  http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name":"Joe",
     "email":"joendambuki16@gmail.com",
-    "password":"12345678",
-    "hfghs":"gfhdsggsd"
+    "username":"Jonathan",
+    "password":"12345678"
+    
 }
+###
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "username":"Joe",
+    "password":"12345678"
+}
+###
+GET  http://localhost:3000/users/Joe
 
 ###
-GET  http://localhost:3000/users/2
+GET  http://localhost:3000/users/user?username=Joe
 
 ###
-DELETE   http://localhost:3000/users/1
+DELETE   http://localhost:3000/users/2
 
 ####
 PUT  http://localhost:3000/users/1
@@ -29,7 +39,7 @@ Content-Type: application/json
     "password":"12345678"
 }
 
-
+###
 GET  http://localhost:3000/events
 ### Post Request
 
@@ -51,12 +61,13 @@ GET  http://localhost:3000/events?location='Nyeri'
 DELETE   http://localhost:3000/events/1
 
 ####
-PUT  http://localhost:3000/events/1
+PUT  http://localhost:3000/events/2
 Content-Type: application/json
 
 {
      "title":" Updated DevFest",
-    "description":"DevFest Nyeri At Dekut",
-    "date":"2022-11-14",
     "location":"Nyeri"
 }
+
+###
+
