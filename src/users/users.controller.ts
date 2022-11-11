@@ -3,13 +3,15 @@ import { UserDTO } from './DTO/user.dto';
 import { UsersService } from './users.service';
 import { AuthGuard } from '@nestjs/passport/dist';
 import { AuthService } from 'src/auth/auth.service';
+import * as bcrypt from 'bcrypt'
+import{ConfigService} from '@nestjs/config'
 @Controller('users')
 export class UsersController {
 constructor(private userService:UsersService,
     @Inject(forwardRef(() => AuthService))
     private authService:AuthService){}
     @Get()
-    getUsers(){
+    getUsers(){       
         return this.userService.getUsers()
     }
  
@@ -31,8 +33,10 @@ constructor(private userService:UsersService,
     }
 
     @Post()
-    addUser(@Body() body:UserDTO){
-       return  this.userService.addUser(body)
+    async addUser(@Body() body:UserDTO){
+        const {password} =body
+        const hashedPassword= await bcrypt.hash(password,8)
+       return  this.userService.addUser({...body , password:hashedPassword})
     }
     @Put(':id')
     updateUser(@Param('id') id :string, @Body() body:Partial<UserDTO>){

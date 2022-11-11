@@ -18,13 +18,13 @@ constructor( @InjectRepository(EventsEntity) private eventsRepo:Repository<Event
         }
         return event
     }
-    createEvent(eventData:EventsDTO){
-        const eventInstance= this.eventsRepo.create(eventData)
-        
+    createEvent(eventData:EventsDTO ,user:any){
+        const eventInstance= this.eventsRepo.create(eventData)  
+        eventInstance.user=user.id
         return this.eventsRepo.save(eventInstance)
     }
     async getEventbyID(id:string){
-        const event= await this.eventsRepo.findOne({where:{id}})
+        const event= await this.eventsRepo.findOne({where:{id}, relations:['user']})
         if(!event){
             throw new NotFoundException('Event Not Found')
         }

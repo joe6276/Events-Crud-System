@@ -11,14 +11,14 @@ constructor(@InjectRepository(UserEntity) private userRepo:Repository<UserEntity
         return this.userRepo.find()
     }
     async getUser(id:string){
-        const user= await this.userRepo.findOne({where:{id}})   
+        const user= await this.userRepo.findOne({where:{id}, relations:['event']})   
         if(!user){
             throw new NotFoundException('User Not Found')
         } 
         return user
     }
-    getUserByUsername(username:string){
-        return this.userRepo.findOne({where:{username}})
+    getUserByUsername(email:string){
+        return this.userRepo.findOne({where:{email}})
     }
     addUser(body:UserDTO){
         const userInstance = this.userRepo.create(body)

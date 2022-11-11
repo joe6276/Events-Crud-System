@@ -7,8 +7,8 @@ POST  http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "email":"joendambuki16@gmail.com",
-    "username":"Jonathan",
+    "email":"joendambuki17@gmail.com",
+    "username":"Jojo",
     "password":"12345678"
     
 }
@@ -17,17 +17,19 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-    "username":"Joe",
+    "username":"Jonathan",
     "password":"12345678"
 }
 ###
 GET  http://localhost:3000/users/Joe
 
 ###
+GET  http://localhost:3000/users/protected
+###
 GET  http://localhost:3000/users/user?username=Joe
 
 ###
-DELETE   http://localhost:3000/users/2
+DELETE   http://localhost:3000/users/4
 
 ####
 PUT  http://localhost:3000/users/1

@@ -1,12 +1,14 @@
 import {Injectable} from '@nestjs/common'
 import {PassportStrategy} from '@nestjs/passport'
 import { ExtractJwt, Strategy } from 'passport-jwt'
+import * as dotenv from 'dotenv'
+dotenv.config()
 export class JTWStrategy extends PassportStrategy(Strategy){
 
 
     constructor(){
         super({
-            secretOrKey:'1234567890',
+            secretOrKey:process.env.SECRET,
             ignoreExpiration:false,
             jwtFromRequest:ExtractJwt.fromAuthHeaderAsBearerToken()
         })
