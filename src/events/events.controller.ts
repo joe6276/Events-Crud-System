@@ -1,5 +1,5 @@
 import { Body, Controller, 
-    Delete, Get, UseGuards, Param, Post, Put, Query } from '@nestjs/common';
+    Delete, Get, UseGuards, Param, Post, Put, Query,Request } from '@nestjs/common';
 import { JWTAUthGuard } from 'src/guards';
 import { EventsDTO } from './DTOS/EventDTo';
 import { EventsService } from './events.service';
@@ -21,8 +21,8 @@ constructor( private eventSerVice: EventsService){}
     }
     @UseGuards(JWTAUthGuard)
     @Post()
-    createEvent(@Body() body: EventsDTO){
-        return this.eventSerVice.createEvent(body)
+    createEvent(@Body() body: EventsDTO, @Request() req){
+        return this.eventSerVice.createEvent(body , req.user)
     }
     @UseGuards(JWTAUthGuard)
     @Put(':id')
@@ -34,5 +34,10 @@ constructor( private eventSerVice: EventsService){}
     
     deleteEvent(@Param('id') id:string){
         return this.eventSerVice.deleteEvent(id)
+    }
+
+    @Get(':id')
+    getaEvent(@Param('id') id:string ){
+        return this.eventSerVice.getEventbyID(id)
     }
 }

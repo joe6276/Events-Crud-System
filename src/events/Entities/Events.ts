@@ -22,6 +22,6 @@ date:string
 @DeleteDateColumn()
 deletedAt:Date
 
-@OneToMany(()=>UserEntity , user =>user.event)
+@ManyToOne(()=>UserEntity , user =>user.event)
 user:UserEntity
 }
